@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskSphere Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar__brand">TaskSphere Pro</div>
+      <nav class="sidebar__nav" role="navigation" aria-label="Main menu">
+        <ul class="sidebar__list" id="sidebar-list">
+          <li><button class="sidebar__link active" data-section="tasks" aria-current="page">Tasks</button></li>
+          <li><button class="sidebar__link" data-section="features">Features</button></li>
+          <li><button class="sidebar__link" data-section="about">About</button></li>
+          <li><button class="sidebar__link" data-section="contact">Contact</button></li>
+        </ul>
+      </nav>
+      <div class="sidebar__footer">
+        <button id="theme-toggle" aria-label="Toggle dark mode" class="btn-icon">🌙</button>
+        <select id="language-select" aria-label="Select language" class="language-select">
+          <option value="en" selected>English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="es">Español</option>
+          <!-- Add more languages -->
+        </select>
+      </div>
+    </aside>
+
+    <main class="main" id="main" tabindex="-1">
+      <!-- Tasks Section -->
+      <section id="tasks" class="section active" aria-labelledby="tasks-title" role="region">
+        <h1 id="tasks-title" class="section-title">Your Tasks</h1>
+        <form id="task-form" aria-label="Add new task form" autocomplete="off">
+          <input type="text" id="task-input" placeholder="Add a new task..." aria-label="Task description" required />
+          <input type="date" id="task-date" aria-label="Due date" />
+          <input type="time" id="task-time" aria-label="Due time" />
+          <select id="task-priority" aria-label="Task priority">
+            <option value="low" selected>Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+          <button type="submit" class="btn-primary">Add Task</button>
+        </form>
+
+        <div class="task-controls">
+          <input type="search" id="task-search" placeholder="Search tasks..." aria-label="Search tasks" />
+          <select id="task-filter" aria-label="Filter tasks">
+            <option value="all" selected>All Tasks</option>
+            <option value="done">Completed</option>
+            <option value="pending">Pending</option>
+          </select>
+          <select id="task-sort" aria-label="Sort tasks">
+            <option value="date-asc" selected>Sort by Date ↑</option>
+            <option value="date-desc">Sort by Date ↓</option>
+            <option value="priority-asc">Sort by Priority ↑</option>
+            <option value="priority-desc">Sort by Priority ↓</option>
+            <option value="name-asc">Sort by Name A-Z</option>
+            <option value="name-desc">Sort by Name Z-A</option>
+          </select>
+          <button id="delete-selected" class="btn-danger" disabled>Delete Selected</button>
+          <button id="undo-btn" class="btn-secondary" disabled>Undo</button>
+          <button id="redo-btn" class="btn-secondary" disabled>Redo</button>
+        </div>
+
+        <ul id="tasks-list" class="tasks-list" aria-live="polite" aria-relevant="additions removals"></ul>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="section" aria-labelledby="features-title" hidden>
+        <h1 id="features-title" class="section-title">Features</h1>
+        <p>Explore powerful features like drag & drop, multi-select, keyboard shortcuts, dark mode, and more.</p>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section" aria-labelledby="about-title" hidden>
+        <h1 id="about-title" class="section-title">About TaskSphere Pro</h1>
+        <p>TaskSphere Pro is a professional-grade task manager built with modern web standards, accessibility, and performance in mind.</p>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section" aria-labelledby="contact-title" hidden>
+        <h1 id="contact-title" class="section-title">Contact Us</h1>
+        <form id="contact-form" novalidate aria-label="Contact form">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" required placeholder="you@example.com" aria-describedby="email-error" />
+          <span id="email-error" class="error-message" aria-live="polite"></span>
+
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" rows="4" required placeholder="Your message" aria-describedby="message-error"></textarea>
+          <span id="message-error" class="error-message" aria-live="polite"></span>
+
+          <button type="submit" class="btn-primary" disabled>Send</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
